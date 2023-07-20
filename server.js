@@ -2,9 +2,19 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
-require('dotenv').config()
-console.log(process.env.MY_SQL_USER) // remove this after you've confirmed it is working
+require('dotenv').config();
+console.log(process.env.MY_SQL_USER); // remove this after you've confirmed it is working
 const util = require('node:util');
+const pool = mysql.createPool({
+    host: 'localhost',
+    port: 3306,
+    user: process.env.MY_SQL_USER,
+    password: process.env.MY_SQL_PASSWORD,
+    database: 'employee_trackerDB',
+    connectionLimit: 5,
+    queueLimit: 0,
+    waitForConnection: true
+});
 
 //Create connection to database
 const connection = mysql.createConnection({
@@ -30,7 +40,7 @@ let start = () => {
     inquirer.prompt({
         name: 'action',
         type: 'list',
-        message: 'What would you like to do?',
+        message: 'Main Menu: What would you like to do',
         choices: [
             'View all employees',
             'View all departments',
@@ -82,7 +92,7 @@ let viewAllEmployees = () => {
         console.table(res);
         start();
     })
-}
+};
 
 //View all departments
 let viewAllDepartments = () => {
@@ -91,7 +101,7 @@ let viewAllDepartments = () => {
         console.table(res);
         start();
     })
-}
+};
 
 //View all position
 let viewAllPosition = () => {
@@ -325,4 +335,9 @@ let deleteEmployee = () => {
         })
     })
 }
+
+function endApp() {
+    process.exit();
+};
+
 
