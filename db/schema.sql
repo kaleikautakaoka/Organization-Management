@@ -6,8 +6,9 @@ USE employee_trackerDB;
 
 CREATE TABLE department(
  id INT AUTO_INCREMENT NOT NULL,
- department_name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id)
+ department_name VARCHAR(40) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY (department_name)
 );
 
 CREATE TABLE employee(
@@ -16,8 +17,6 @@ CREATE TABLE employee(
  last_name VARCHAR(30) NOT NULL,
  position_id INT NOT NULL,
  PRIMARY KEY (id),
- FOREIGN KEY (role_id) REFERENCES role(id),
- FOREIGN KEY (manager_id) REFERENCES employee(id)
 );
 
 CREATE TABLE position(
@@ -26,5 +25,5 @@ CREATE TABLE position(
  salary DECIMAL NOT NULL,
  department_id INT NOT NULL,
  PRIMARY KEY (id),
- FOREIGN KEY (department_id) REFERENCES department(id)
+ FOREIGN KEY (department_id) REFERENCES employee(id)
 );
