@@ -53,42 +53,42 @@ INSERT INTO employee (first_name, last_name, position_id, manager_id) VALUES ('R
 
 
 
-INSERT INTO position (title, salary, department_id) VALUES ('Sales Manager', 900000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Sales Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Software Development', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Software Testing', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Book Keeping', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Accountant', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Lawyer', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Paralegal', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Human Resources Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Human Resources Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Marketing Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Marketing Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Customer Service Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Customer Service Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Research and Development Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Research and Development Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Information Technology Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Information Technology Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Purchasing Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Purchasing Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Production Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Production Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Quality Assurance Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Quality Assurance Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Shipping Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Shipping Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Administration Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Administration Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Executive Manager', 950000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Executive Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Facilities Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Facilities Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Maintenance Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Maintenance Associate', 50000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Security Manager', 90000, 1);
-INSERT INTO position (title, salary, department_id) VALUES ('Security Associate', 50000, 1);
+INSERT INTO position (title, salary) VALUES ('Sales Manager', 900000);
+INSERT INTO position (title, salary) VALUES ('Sales Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Software Development', 50000);
+INSERT INTO position (title, salary) VALUES ('Software Testing', 50000);
+INSERT INTO position (title, salary) VALUES ('Book Keeping', 50000);
+INSERT INTO position (title, salary) VALUES ('Accountant', 50000);
+INSERT INTO position (title, salary) VALUES ('Lawyer', 90000);
+INSERT INTO position (title, salary) VALUES ('Paralegal', 50000);
+INSERT INTO position (title, salary) VALUES ('Human Resources Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Human Resources Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Marketing Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Marketing Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Customer Service Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Customer Service Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Research and Development Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Research and Development Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Information Technology Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Information Technology Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Purchasing Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Purchasing Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Production Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Production Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Quality Assurance Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Quality Assurance Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Shipping Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Shipping Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Administration Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Administration Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Executive Manager', 950000);
+INSERT INTO position (title, salary) VALUES ('Executive Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Facilities Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Facilities Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Maintenance Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Maintenance Associate', 50000);
+INSERT INTO position (title, salary) VALUES ('Security Manager', 90000);
+INSERT INTO position (title, salary) VALUES ('Security Associate', 50000);
 
 ```
 
