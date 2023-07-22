@@ -8,22 +8,22 @@ const util = require('node:util');
 const pool = mysql.createPool({
     host: 'localhost',
     port: 3306,
-    user: process.env.MY_SQL_USER,
-    password: process.env.MY_SQL_PASSWORD,
-    database: 'employee_trackerDB',
+    user: 'root',
+    password: 'Pickles2020',
+    database: 'employee_trackerdb',
     connectionLimit: 5,
     queueLimit: 0,
     waitForConnection: true
 });
 
 //Create connection to database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: process.env.MY_SQL_USER,
-    password: process.env.MY_SQL_PASSWORD,
-    database: 'employee_trackerDB',
-});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     port: 3306,
+//     user: process.env.MY_SQL_USER,
+//     password: process.env.MY_SQL_PASSWORD,
+//     database: 'employee_trackerDB',
+// });
 
 consoleTable;
 
