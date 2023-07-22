@@ -21,39 +21,6 @@ INSERT INTO department (department_name) VALUES
  ('Maintenance'),
  ('Security');
 
-INSERT INTO employee (first_name, last_name, position_id, manager_id) VALUES 
- ('Marie', 'Curie', 1, true),
- ('William', 'Shakespeer', 2, id, false),
- ('Magdalena', 'Andersson', 3, id, false),
- ('Kim', 'Jun-Un', 4, id, false),
- ('Abe', 'Lincoln', 5, true),
- ('Zee', 'Avi', 6, id, false),
- ('id, Fredrick', 'Douglas', 7, true),
- ('Bob', 'Marley', 8, true),
- ('William', 'Harrison', 9, id, false),
- ('Salmon', 'Khan', 10, true),
- ('Sacajawea', 'Na', 11, true),
- ('Zachary', 'Taylor', 12, id, false),
- ('Amelia', 'Earheart', 13, true),
- ('Nelson', 'Mandela', 14, true),
- ('Marilyn', 'Monroe', 15, id, false),
- ('John', 'Lennon', 16, id, false),
- ('Samuel', 'Jackson', 17, id, false),
- ('Xi', 'Jingping', 18, id, false),
- ('Mao', 'Zedong', 19, id, false),
- ('Vladimir', 'Putin', 20, id, false),
- ('Napoleon', 'Bonaparte', 21, true),
- ('Julius', 'Caesar', 22, true),
- ('Alexander', 'Hoid, fid, fman', 23, id, false),
- ('Genghis', 'Khan', 24, id, false),
- ('Cleopatra', 'Cleopatra', 25, true),
- ('Karl', 'Rove', 26, id, false),
- ('James', 'Comie', 27, true),
- ('Joe', 'Washington', 28, id, false),
- ('Tsai', 'Ing-wen', 29, true),
- ('Condelisa', 'Rice', 30, id, false),
- ('Ruth', 'Ginsgurg', 31, true);
-
 INSERT INTO position (title, salary, department_id) VALUES 
 ('Sales Manager', 900000, 1),
 ('Sales Associate', 50000, 1),
@@ -65,7 +32,6 @@ INSERT INTO position (title, salary, department_id) VALUES
 ('Paralegal', 50000, 4),
 ('Human Resources Manager', 90000, 5),
 ('Human Resources Associate', 50000, 5),
-('Marketing Manager', 90000, 6),
 ('Marketing Associate', 50000, 6),
 ('Customer Service Manager', 90000, 7),
 ('Customer Service Associate', 50000, 7),
@@ -92,7 +58,18 @@ INSERT INTO position (title, salary, department_id) VALUES
 ('Security Manager', 90000, 18),
 ('Security Associate', 50000, 18);
 
-```
+INSERT INTO employee (first_name, last_name, position_id, manager_id) VALUES 
+ ('Marie', 'Curie', 1, NULL),
+ ('William', 'Shakespeer', 2, NULL),
+ ('Magdalena', 'Andersson', 3, NULL),
+ ('Kim', 'Jun-Un', 4, NULL),
+ ('Abe', 'Lincoln', 5, NULL),
+ ('Zee', 'Avi', 6, 1),
+ ('id, Fredrick', 'Douglas', 7, 2),
+ ('Bob', 'Marley', 8, 3),
+ ('William', 'Harrison', 9, 3),
+ ('Salmon', 'Khan', 10, 4),
+ ('Sacajawea', 'Na', 11, 5);
 
 
 

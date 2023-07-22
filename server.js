@@ -3,17 +3,14 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 require('dotenv').config();
-console.log(process.env.MY_SQL_USER); // remove this after you've confirmed it is working
+
 const util = require('node:util');
-const pool = mysql.createPool({
+const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
     password: 'Pickles2020',
-    database: 'employee_trackerdb',
-    connectionLimit: 5,
-    queueLimit: 0,
-    waitForConnection: true
+    database: 'employee_trackerdb'
 });
 
 connection.connect(function (err) {
@@ -21,10 +18,6 @@ connection.connect(function (err) {
     console.log("connected to the database!");
     start();
 });
-
-consoleTable("The Organization Management App!");
-
-connection.query = util.promisify(connection.query);
 
 const start = async () => {
     const { choice } = await inquirer.prompt({
@@ -38,42 +31,44 @@ const start = async () => {
             'Add an employee',
             'Add a position',
             'Add a department',
-            'Update an employee role',
+            'Update an employee position',
             'Exit'
         ]
     });
     switch (choice) {
         case 'View all employees':
             return viewEmployees();
-        case 'View all roles':
+        case 'View all positions':
             return viewPosition();
         case 'View all departments':
             return viewDepartments();
         case 'Add an employee':
             return addEmployee();
-        case 'Add a role':
+        case 'Add a position':
             return addPosition();
         case 'Add a department':
             return addDepartment();
-        case 'Update an employee role':
-            return updateEmployeeRole();
+        case 'Update an employee position':
+            return updateEmployeeposition();
         default:
             return exit();
     }
 }
 
-const viewEmployees = async () => {
-    const employees = await connection.query('SELECT * FROM employee');
-    console.table(employees);
-    return start();
+const viewEmployees =  () => {
+    connection.query('SELECT * FROM employee', function (err, result){
+        if (err) throw err;
+        console.table(result);
+        start();
+    });
 }
-
+//edit viewPosition
 const viewPosition = async () => {
-    const roles = await connection.query('SELECT * FROM position');
+    const position = await connection.query('SELECT * FROM position');
     console.table(position);
     return start();
 }
-
+//edit viewDepartments
 const viewDepartments = async () => {
     const departments = await connection.query('SELECT * FROM department');
     console.table(departments);
@@ -81,7 +76,7 @@ const viewDepartments = async () => {
 }
 
 const addEmployee = async () => {
-    const roles = await connection.query('SELECT * FROM role');
+    const position = await connection.query('SELECT * FROM position');
     const employees = await connection.query('SELECT * FROM employee');
     const employee = await inquirer.prompt([
         {
@@ -98,7 +93,7 @@ const addEmployee = async () => {
             name: 'position_id',
             type: 'list',
             message: "What is the employee's position?",
-            choices: position.map((role) => ({
+            choices: position.map((position) => ({
                 name: position.title,
                 value: position.id
             }))
@@ -156,14 +151,14 @@ const addDepartment = async () => {
     return start();
 }
 
-const updateEmployeeRole = async () => {
+const updateEmployeeposition = async () => {
     const employees = await connection.query('SELECT * FROM employee');
-    const roles = await connection.query('SELECT * FROM position');
+    const position = await connection.query('SELECT * FROM position');
     const employee = await inquirer.prompt([
         {
             name: 'id',
             type: 'list',
-            message: "Which employee's role would you like to update?",
+            message: "Which employee's position would you like to update?",
             choices: employees.map((employee) => ({
                 name: `${employee.first_name} ${employee.last_name}`,
                 value: employee.id
@@ -172,10 +167,10 @@ const updateEmployeeRole = async () => {
         {
             name: 'position_id',
             type: 'list',
-            message: "What is the employee's new role?",
-            choices: roles.map((role) => ({
-                name: role.title,
-                value: role.id
+            message: "What is the employee's new position?",
+            choices: position.map((position) => ({
+                name: position.title,
+                value: position.id
             }))
         }
     ]);
@@ -186,6 +181,4 @@ const updateEmployeeRole = async () => {
 const exit = () => {
     connection.end();
     process.exit();
-}
-
-start();
+};
