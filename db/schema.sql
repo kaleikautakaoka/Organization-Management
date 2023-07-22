@@ -7,7 +7,7 @@ USE employee_trackerdb;
 CREATE TABLE department (
  id INT NOT NULL AUTO_INCREMENT,
  department_name VARCHAR(30),
-    PRIMARY KEY (id)
+ PRIMARY KEY (id)
 );
 
 CREATE TABLE employee (
@@ -17,7 +17,7 @@ CREATE TABLE employee (
  position_id INT,
  manager_id BOOLEAN,
  PRIMARY KEY (id)
-    FOREIGN KEY (position_id) REFERENCES position (id),
+ FOREIGN KEY (position_id) REFERENCES position (id),
    --  ON DELETE SET NULL,
    --  FOREIGN KEY (salary) REFERENCES position(salary),
    --  ON DELETE SET NULL,
@@ -31,8 +31,7 @@ CREATE TABLE position (
  salary DECIMAL,
  department_id INT,
  PRIMARY KEY (id)
- FOREIGN KEY (department_id) REFERENCES department (id),
-    ON DELETE SET NULL,
+ FOREIGN KEY (department_id) REFERENCES department (id) ON DELETE SET NULL,
 --  FOREIGN KEY (first_name) REFERENCES employee(first_name),
 --     ON DELETE SET NULL,
 --  FOREIGN KEY (last_name) REFERENCES employee(last_name),
