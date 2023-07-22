@@ -55,130 +55,126 @@ const start = async () => {
     }
 }
 
-const viewEmployees =  () => {
+const viewEmployees = () => {
     connection.query('SELECT * FROM employee', function (err, result){
         if (err) throw err;
         console.table(result);
         start();
     });
 }
-//edit viewPosition
-const viewPosition = async () => {
-    const position = await connection.query('SELECT * FROM position');
-    console.table(position);
-    return start();
-}
-//edit viewDepartments
-const viewDepartments = async () => {
-    const departments = await connection.query('SELECT * FROM department');
-    console.table(departments);
-    return start();
+
+const viewPosition = () => {
+    connection.query('SELECT * FROM position', function (err, result){
+        if (err) throw err;
+    console.table(result);
+        start();
+    });
 }
 
-const addEmployee = async () => {
-    const position = await connection.query('SELECT * FROM position');
-    const employees = await connection.query('SELECT * FROM employee');
-    const employee = await inquirer.prompt([
+
+const viewDepartments = () => {
+    connection.query('SELECT * FROM department', function (err, result){
+        if (err) throw err;
+    console.table(result);
+        start();
+    });
+}
+
+const addEmployee = () => {
+    inquirer.prompt([
         {
+            type: 'input',
             name: 'first_name',
-            type: 'input',
-            message: "What is the employee's first name?"
+            message: 'What is the employees first name?'
         },
         {
+            type: 'input',
             name: 'last_name',
+            message: 'What is the employees last name?'
+        },
+        {
             type: 'input',
-            message: "What is the employee's last name?"
-        },
-        {
             name: 'position_id',
-            type: 'list',
-            message: "What is the employee's position?",
-            choices: position.map((position) => ({
-                name: position.title,
-                value: position.id
-            }))
+            message: 'What is the employees position id?'
         },
         {
+            type: 'input',
             name: 'manager_id',
-            type: 'list',
-            message: "Who is the employee's manager?",
-            choices: employees.map((employee) => ({
-                name: `${employee.first_name} ${employee.last_name}`,
-                value: employee.id
-            }))
+            message: 'What is the employees manager id?'
         }
-    ]);
-    await connection.query('INSERT INTO employee SET ?', employee);
-    return start();
+    ]).then(function (res) {
+        connection.query('INSERT INTO employee SET ?', res, function (err, result) {
+            if (err) throw err;
+            console.table(result);
+            start();
+        });
+    });
 }
 
-const addPosition = async () => {
-    const departments = await connection.query('SELECT * FROM department');
-    const position = await inquirer.prompt([
+const addPosition = () => {
+    inquirer.prompt([
         {
+            type: 'input',
             name: 'title',
-            type: 'input',
-            message: "What is the position title?"
+            message: 'What is the position title?'
         },
         {
+            type: 'input',
             name: 'salary',
-            type: 'input',
-            message: "What is the position salary?"
+            message: 'What is the position salary?'
         },
         {
+            type: 'input',
             name: 'department_id',
-            type: 'list',
-            message: "What is the position department?",
-            choices: departments.map((department) => ({
-                name: department.name,
-                value: department.id
-            }))
+            message: 'What is the position department id?'
         }
-    ]);
-    await connection.query('INSERT INTO position SET ?', position);
-    return start();
+    ]).then(function (res) {
+        connection.query('INSERT INTO position SET ?', res, function (err, result) {
+            if (err) throw err;
+            console.table(result);
+            start();
+        });
+    });
 }
 
-const addDepartment = async () => {
-    const department = await inquirer.prompt([
+const addDepartment = () => {
+    inquirer.prompt([
         {
-            name: 'name',
             type: 'input',
-            message: "What is the department name?"
+            name: 'department_name',
+            message: 'What is the department name?'
         }
-    ]);
-    await connection.query('INSERT INTO department SET ?', department);
-    return start();
+    ]).then(function (res) {
+        connection.query('INSERT INTO department SET ?', res, function (err, result) {
+            if (err) throw err;
+            console.table(result);
+            start();
+        });
+    });
 }
 
-const updateEmployeeposition = async () => {
-    const employees = await connection.query('SELECT * FROM employee');
-    const position = await connection.query('SELECT * FROM position');
-    const employee = await inquirer.prompt([
+const updateEmployeeposition = () => {
+    inquirer.prompt([
         {
+            type: 'input',
             name: 'id',
-            type: 'list',
-            message: "Which employee's position would you like to update?",
-            choices: employees.map((employee) => ({
-                name: `${employee.first_name} ${employee.last_name}`,
-                value: employee.id
-            }))
+            message: 'What is the employee id?'
         },
         {
+            type: 'input',
             name: 'position_id',
-            type: 'list',
-            message: "What is the employee's new position?",
-            choices: position.map((position) => ({
-                name: position.title,
-                value: position.id
-            }))
+            message: 'What is the new role id?'
         }
-    ]);
-    await connection.query('UPDATE employee SET position_id = ? WHERE id = ?', [employee.position_id, employee.id]);
-    return start();
+    ]).then(function (res) {
+        connection.query('UPDATE employee SET position_id = ? WHERE id = ?', [res.position_id, res.id], function (err, result) {
+            if (err) throw err;
+            console.table(result);
+            start();
+        });
+    });
 }
 
 const exit = () => {
     connection.end();
     process.exit();
-};
+}
